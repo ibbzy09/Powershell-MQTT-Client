@@ -26,7 +26,8 @@
         ClientDLLPath   = '.\Library\lib\net45\M2Mqtt.Net.dll'
     }
     RecipesPath = ".\Recipes"
-    ApplicationLoopInterval  = 250 
+    ApplicationLoopInterval  = 100 
+    RecipeExecutionType = "async"
     # RegisterRunbooksInterval = 5
     # RegisterRunbooksBy       = @(
     #     "Manifest"
