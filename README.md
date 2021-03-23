@@ -4,7 +4,7 @@
 PowerShell2MQTT (PS2MQTT) is small PowerShell utility that lets you setup a tiny Windows agent to listen and subscribe to MQTT events. You can trigger workflows AKA "Recipes" based on MQTT topics. 
 
 
-I wrote this utility to service my home, it's so good I decided to open source and share it.
+I wrote this utility to service my home, it worked well so I decided to open source and share it.
 
 * Comes with Premade Recipes I use around my home (Toast, Turn On/Off Screen and Open Chrome)
 * Uses the common and popular MQTT client written in .net.
