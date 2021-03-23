@@ -2,7 +2,7 @@ Param (
     $Config = $Null, 
     $Message = $Null  
 )
-$Message | Out-File file.txt
+
 $Object = $Message | ConvertFrom-Json 
 
 function Show-Notification {

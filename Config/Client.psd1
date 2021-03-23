@@ -2,14 +2,14 @@
 # Please read through the short codecase and understand what each variable does
 # Changing this after vmwa has been setup may break something :)
 @{
-    MQTT                     = @{ 
+    MQTT                    = @{ 
         Server          = 'mqtt'
         Username        = $Null
         Password        = $Null
         Topics          = @{
             Recipe = "ps2mqtt/recipe/#" 
-            Will    = "ps2mqtt/status"
-            Status  = "ps2mqtt/status"
+            Will   = "ps2mqtt/status"
+            Status = "ps2mqtt/status"
         }
         Messages        = @{
             Online  = "online"
@@ -25,12 +25,7 @@
         KeepAlivePeriod = 30
         ClientDLLPath   = '.\Library\lib\net45\M2Mqtt.Net.dll'
     }
-    RecipesPath = ".\Recipes"
-    ApplicationLoopInterval  = 100
-    RecipeExecutionType = "async"
-    # RegisterRunbooksInterval = 5
-    # RegisterRunbooksBy       = @(
-    #     "Manifest"
-    #     "Package"
-    # )
+    RecipesPath             = ".\Recipes"
+    ApplicationLoopInterval = 100
+    RecipeExecutionType     = "async"
 }

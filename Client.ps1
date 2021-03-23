@@ -23,7 +23,7 @@ Try {
         Try {
             
             $TopicRaw = $MqttObject.Topic
-            $MessageDecoded = ([System.Text.Encoding]::ASCII.GetString($MqttObject.Message))
+            $MessageDecoded = ([System.Text.Encoding]::UTF8.GetString($MqttObject.Message))
 
             Write-Host "Got... " $TopicRaw
 
