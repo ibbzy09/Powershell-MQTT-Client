@@ -25,8 +25,7 @@ Try {
 
             Write-Host "Got... " $TopicRaw
 
-            $Pattern = [regex]"\((.*)\)"
-            $Capture = [regex]::match($TopicRaw, $Pattern)
+            $Capture = [regex]::match($TopicRaw, ([regex]"\((.*)\)"))
             
             If ($Capture.Groups.Success -eq $True) {
                 $Parameters = $Capture.Groups[1] -split ","
@@ -58,22 +57,19 @@ Try {
                 If ($Capture.Groups.Success -eq $True -and $Parameters.Contains("async")) {
                     $Async = $True
                 }
-
                 elseif ($Capture.Groups.Success -eq $True -and $Parameters.Contains("sync")) {
                     $Async = $False
                 }
                 
                 If ($Async -eq $True) {
                     Write-Host "Running async" ($RecipePath + "\Main.ps1" )
-                    # Start-Job -FilePath ($RecipePath + "\Main.ps1") -ArgumentList @($Config, $([System.Text.Encoding]::ASCII.GetString($MqttObject.Message))) 
 
                     $AsyncJob = [PowerShell]::Create()
-                    $null = $AsyncJob.AddScript( {
+                    $Null = $AsyncJob.AddScript( {
                             Param($Object)
                             & $Object.File -Config $Object.Config -Message $Object.Message
                         }).AddArgument(@{File = ($RecipePath + "\Main.ps1"); Config = $Config ; Topic = $TopicRaw; Message = $MessageDecoded; })
                     $AsyncJob.BeginInvoke()
-
                 }
                 else {
                     Write-Host "Running sync" ($RecipePath + "\Main.ps1" )
@@ -94,12 +90,7 @@ Try {
         }
     }
 
-    # Get-EventSubscriber -Force | Unregister-Event -Force
-
-    Register-ObjectEvent `
-        -inputObject $MqttClient `
-        -EventName MqttMsgPublishReceived `
-        -Action { MQTTMsgReceived $($args[1]) }
+    Register-ObjectEvent -inputObject $MqttClient -EventName MqttMsgPublishReceived -Action { MQTTMsgReceived $($args[1]) }
 
     $MqttClient.Subscribe($Config.MQTT.Topics.Recipe, 0)
 
@@ -112,10 +103,7 @@ Catch {
     Write-Error $_
 }
 Finally {
-
-    $MqttClient.Publish($Config.MQTT.Topics.Status, [System.Text.Encoding]::UTF8.GetBytes($Config.MQTT.Messages.OFfline), 0, 0)
     $MqttClient.Disconnect()
     Write-Host "Disconnecting from server..."
     Get-EventSubscriber -Force | Unregister-Event -Force
-
 }
