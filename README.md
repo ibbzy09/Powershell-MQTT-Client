@@ -1,10 +1,9 @@
 
 # PowerShell2MQTT
 
-PowerShell2MQTT (PS2MQTT) is small PowerShell utility that lets you setup a tiny Windows agent to listen and subscribe to MQTT events. You can trigger workflows AKA "Recipes" based on MQTT topics. 
+Powershell2MQTT (ps2mqtt) is small PowerShell utility that lets you listen and subscribe to MQTT events and trigger workflows AKA "Recipes" with MQTT topics. 
 
-
-I wrote this utility to service my home, it worked well so I decided to open source and share it.
+The folders in the Recipes folders become your topics e.g. ps2mqtt/recipe/open-chrome . When any message comes in, the Main.ps1 script under this folder is run.
 
 * Comes with Premade Recipes I use around my home (Toast, Turn On/Off Screen and Open Chrome)
 * Uses the common and popular MQTT client written in .net.
@@ -12,7 +11,9 @@ I wrote this utility to service my home, it worked well so I decided to open sou
 * Modular, MQTT Topics can run Recipes 
 * Supports asynchronous and synchronous workflows
 
-More background: There were many scenarios I wanted to achieve and after Googling around I couldn't find much or anyone who had done before, I wanted to show a Windows Toast on my screen after someone pressed my doorbell, turn on a screen and show a live camera feed of visitors and many other Windows automations. So I wrote this over the course of two evenings.
+Why:
+I wrote this utility to service my home, it worked well so I decided to open source and share it.
+There were many scenarios I wanted to achieve and after Googling around I couldn't find much or anyone who had done before, I wanted to show a Windows Toast on my screen after someone pressed my doorbell, turn on a screen and show a live camera feed of visitors and many other Windows automations. So I wrote this over the course of two evenings.
 
 
 ## Config
