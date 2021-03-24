@@ -9,7 +9,7 @@ Features:
 
 * Premade Recipes: Windows Toast, Turn On/Off Screen and Open Chrome
 * Uses open source .Net MQTT library
-* Less than 150 lines of PowerShell 
+* Less than 100 lines of PowerShell 
 * MQTT topics directly run Recipes 
 * Asynchronous and synchronous workflows via parameters
 * Supports UTF-8 Subscribed messages
