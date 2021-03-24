@@ -1,15 +1,17 @@
 
 # PowerShell2MQTT
 
-Powershell2MQTT (ps2mqtt) is small utility which lets you listen and subscribe to MQTT events, trigger workflows AKA "Recipes" with MQTT topics. 
+Powershell2MQTT (formerly ps2mqtt) is small utility which lets you listen and subscribe to MQTT events, trigger workflows AKA "Recipes" with MQTT topics. 
 
 The folders in the Recipes directory become your topics! e.g. ps2mqtt/recipe/open-chrome triggers ./Recipe/Open-Chrome/Main.ps1 When any message comes in. 
 
-* Has some basic Recipes: Windows Toast, Turn On/Off Screen and Open Chrome
-* Uses open source .net MQTT NuGet library
-* Written in less than 150 lines of PowerShell - easy to read and auditable 
+* Premade Recipes: Windows Toast, Turn On/Off Screen and Open Chrome
+* Uses open source .Net MQTT library
+* Less than 150 lines of PowerShell 
 * MQTT topics directly run Recipes 
 * Asynchronous and synchronous workflows via parameters (unique to this project)
+* Supports UTF-8 Subscribed messages
+* Passes through lots of metadata to a Recipe!
 
 ## Why
 
